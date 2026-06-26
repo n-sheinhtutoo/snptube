@@ -2,8 +2,9 @@ services:
   api:
     build: .
     ports:
-      - "8000:8000"
+      - "${PORT:-8000}:${PORT:-8000}"
     environment:
+      - PORT=${PORT:-8000}
       - DOWNLOAD_DIR=/app/downloads
       - LOG_LEVEL=INFO
       - CORS_ORIGINS=*

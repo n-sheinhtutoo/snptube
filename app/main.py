@@ -85,3 +85,14 @@ async def global_exception_handler(request: Request, exc: Exception) -> JSONResp
         status_code=500,
         content={"error": "Internal server error", "detail": None},
     )
+
+
+if __name__ == "__main__":
+    import os
+    import uvicorn
+    uvicorn.run(
+        "app.main:app",
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", "8000")),
+        log_level=os.environ.get("LOG_LEVEL", "info").lower(),
+    )
